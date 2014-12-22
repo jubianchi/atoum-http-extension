@@ -6,7 +6,7 @@ atoum HTTP extension based on PSR-7 standard.
 
 ## Todo
 
-* `request` asserter derivating form the `message` asserter
+* ~~`request` asserter derivating form the `message` asserter~~
     * `url` child asserter
     * `method` child asserter
 * `incomingRequest` asserter derivating form the `request` asserter
@@ -14,6 +14,6 @@ atoum HTTP extension based on PSR-7 standard.
     * `cookies` child asserter
     * `files` child asserter
     * `attributes` child asserter
-* `response` asserter derivating form the `message` asserter
+* ~~`response` asserter derivating form the `message` asserter~~
     * `status` child asserter
     * `reason` child asserter
