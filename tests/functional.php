@@ -9,10 +9,10 @@ use mageekguy\atoum\test;
 
 class functional extends test
 {
-    public function __construct(adapter $adapter = null, annotations\extractor $annotationExtractor = null, asserter\generator $asserterGenerator = null, test\assertion\manager $assertionManager = null, \closure $reflectionClassFactory = null)
-    {
-        $this->setTestNamespace('#(?:^|\\\)tests?\\\functionals?\\\#i');
+	public function __construct(adapter $adapter = null, annotations\extractor $annotationExtractor = null, asserter\generator $asserterGenerator = null, test\assertion\manager $assertionManager = null, \closure $reflectionClassFactory = null)
+	{
+		$this->setTestNamespace('#(?:^|\\\)tests?\\\functionals?\\\#i');
 
-        parent::__construct($adapter, $annotationExtractor, $asserterGenerator, $assertionManager, $reflectionClassFactory);
-    }
+		parent::__construct($adapter, $annotationExtractor, $asserterGenerator, $assertionManager, $reflectionClassFactory);
+	}
 } 

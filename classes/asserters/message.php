@@ -14,122 +14,134 @@ use Psr\Http\Message\MessageInterface;
 
 class message extends object
 {
-    protected $protocolAsserterFactory;
-    protected $bodyAsserterFactory;
-    protected $headersAsserterFactory;
+	protected $protocolAsserterFactory;
+	protected $bodyAsserterFactory;
+	protected $headersAsserterFactory;
 
-    public function __construct(asserter\generator $generator = null, tools\variable\analyzer $analyzer = null, atoum\locale $locale = null)
-    {
-        parent::__construct($generator, $analyzer, $locale);
+	public function __construct(asserter\generator $generator = null, tools\variable\analyzer $analyzer = null, atoum\locale $locale = null)
+	{
+		parent::__construct($generator, $analyzer, $locale);
 
-        $this
-            ->setProtocolAsserterFactory()
-            ->setBodyAsserterFactory()
-            ->setHeadersAsserterFactory()
-        ;
-    }
+		$this
+			->setProtocolAsserterFactory()
+			->setBodyAsserterFactory()
+			->setHeadersAsserterFactory()
+		;
+	}
 
-    public function __get($property)
-    {
-        switch (strtolower($property))
-        {
-            case 'protocol':
-            case 'body':
-            case 'headers':
-                return $this->{$property}();
+	public function __get($property)
+	{
+		switch (strtolower($property))
+		{
+			case 'protocol':
+			case 'body':
+			case 'headers':
+				return $this->{$property}();
 
-            default:
-                return parent::__get($property);
-        }
-    }
+			default:
+				return parent::__get($property);
+		}
+	}
 
-    public function setProtocolAsserterFactory(\closure $factory = null)
-    {
-        $generator = $this->generator;
-        $test = & $this->test;
+	public function setProtocolAsserterFactory(\closure $factory = null)
+	{
+		$factory = $factory ?: function(asserter\generator $generator) {
+			return new protocol($generator);
+		};
 
-        $this->protocolAsserterFactory = $factory ?: function() use ($generator, & $test) {
-            $protocol = new protocol($generator);
+		$generator = $this->generator;
+		$test = & $this->test;
 
-            if ($test !== null)
-            {
-                $protocol->setWithTest($test);
-            }
+		$this->protocolAsserterFactory = function() use ($generator, $factory, & $test) {
+			$protocol = $factory($generator);
 
-            return $protocol;
-        };
+			if ($this->test !== null)
+			{
+				$protocol->setWithTest($this->test);
+			}
 
-        return $this;
-    }
+			return $protocol;
+		};
 
-    public function setBodyAsserterFactory(\closure $factory = null)
-    {
-        $generator = $this->generator;
-        $test = & $this->test;
+		return $this;
+	}
 
-        $this->bodyAsserterFactory = $factory ?: function() use ($generator, & $test) {
-            $body = new body($generator);
+	public function setBodyAsserterFactory(\closure $factory = null)
+	{
+		$factory = $factory ?: function(asserter\generator $generator) {
+			return new body($generator);
+		};
 
-            if ($test !== null)
-            {
-                $body->setWithTest($test);
-            }
+		$generator = $this->generator;
+		$test = & $this->test;
 
-            return $body;
-        };
+		$this->bodyAsserterFactory = function() use ($generator, $factory, & $test) {
+			$body = $factory($generator);
 
-        return $this;
-    }
+			if ($this->test !== null)
+			{
+				$body->setWithTest($this->test);
+			}
 
-    public function setHeadersAsserterFactory(\closure $factory = null)
-    {
-        $generator = $this->generator;
-        $test = & $this->test;
+			return $body;
+		};
 
-        $this->headersAsserterFactory = $factory ?: function() use ($generator, & $test) {
-            $headers = new headers($generator);
+		return $this;
+	}
 
-            if ($test !== null)
-            {
-                $headers->setWithTest($test);
-            }
+	public function setHeadersAsserterFactory(\closure $factory = null)
+	{
+		$factory = $factory ?: function(asserter\generator $generator, atoum\test $test = null) {
+			return new headers($generator);
+		};
 
-            return $headers;
-        };
+		$generator = $this->generator;
+		$test = & $this->test;
 
-        return $this;
-    }
+		$this->headersAsserterFactory = function() use ($generator, $factory, & $test) {
+			$headers = $factory($generator);
 
-    public function setWith($value, $checkType = true)
-    {
-        parent::setWith($value, $checkType);
+			if ($this->test !== null)
+			{
+				$headers->setWithTest($this->test);
+			}
 
-        if ($checkType === true && $value instanceof MessageInterface === false)
-        {
-            $this->fail($this->_(sprintf('%s is not a valid HTTP message', $this)));
-        }
+			return $headers;
+		};
 
-        return $this;
-    }
+		return $this;
+	}
 
-    public function protocol()
-    {
-        $protocol = call_user_func($this->protocolAsserterFactory);
+	public function setWith($value, $checkType = true)
+	{
+		parent::setWith($value, $checkType);
 
-        return $protocol->setParentAsserter($this);
-    }
+		if ($checkType === true && $value instanceof MessageInterface === false)
+		{
+			$this->fail($this->_(sprintf('%s is not a valid HTTP message', $this)));
+		}
 
-    public function body()
-    {
-        $body = call_user_func($this->bodyAsserterFactory);
+		return $this;
+	}
 
-        return $body->setParentAsserter($this);
-    }
+	public function protocol()
+	{
+		$protocol = call_user_func_array($this->protocolAsserterFactory, array($this->generator));
 
-    public function headers()
-    {
-        $body = call_user_func($this->headersAsserterFactory);
+		return $protocol->setParentAsserter($this);
+	}
 
-        return $body->setParentAsserter($this);
-    }
+	public function body()
+	{
+		$body = call_user_func_array($this->bodyAsserterFactory, array($this->generator));
+
+		return $body->setParentAsserter($this);
+	}
+
+	public function headers()
+	{
+		$body = call_user_func_array($this->headersAsserterFactory, array($this->generator));
+
+		return $body->setParentAsserter($this);
+	}
 } 

@@ -23,11 +23,11 @@ class extension implements atoum\extension
 				->addHandler($handler, array('--test-ext'))
 				->addHandler($handler, array('--test-it'))
 				->addHandler(
-                    function($script, $argument, $values) {
-                        $script->getRunner()->addTestsFromDirectory(dirname(__DIR__) . '/tests/functionals');
-                    },
-                    array('--test-functionals')
-                )
+					function($script, $argument, $values) {
+						$script->getRunner()->addTestsFromDirectory(dirname(__DIR__) . '/tests/functionals');
+					},
+					array('--test-functionals')
+				)
 			;
 		}
 	}
@@ -44,11 +44,11 @@ class extension implements atoum\extension
 		return $this->runner;
 	}
 
-    public function setTest(atoum\test $test)
+	public function setTest(atoum\test $test)
 	{
 		$this->test = $test;
 
-        $this->test->getAsserterGenerator()->addNamespace(__NAMESPACE__ . '\\asserters');
+		$this->test->getAsserterGenerator()->addNamespace(__NAMESPACE__ . '\\asserters');
 
 		return $this;
 	}
@@ -58,7 +58,7 @@ class extension implements atoum\extension
 		return $this->test;
 	}
 
-    public function handleEvent($event, observable $observable) {
+	public function handleEvent($event, observable $observable) {
 		return $this;
 	}
 }

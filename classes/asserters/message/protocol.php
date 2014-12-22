@@ -10,22 +10,22 @@ use mageekguy\atoum;
 
 class protocol extends string
 {
-    protected $message;
+	protected $message;
 
-    public function __call($method, $arguments)
-    {
-        return call_user_func_array(array($this->message, $method), $arguments);
-    }
+	public function __call($method, $arguments)
+	{
+		return call_user_func_array(array($this->message, $method), $arguments);
+	}
 
-    public function __get($asserter)
-    {
-        return $this->message->__get($asserter);
-    }
+	public function __get($asserter)
+	{
+		return $this->message->__get($asserter);
+	}
 
-    public function setParentAsserter(atoum\http\asserters\message $message)
-    {
-        $this->message = $message;
+	public function setParentAsserter(atoum\http\asserters\message $message)
+	{
+		$this->message = $message;
 
-        return $this->setWith($this->message->getValue()->getProtocolVersion());
-    }
+		return $this->setWith($this->message->getValue()->getProtocolVersion());
+	}
 } 
