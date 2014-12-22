@@ -1,0 +1,29 @@
+{
+    "name": "atoum/http-extension",
+    "type": "library",
+    "description": "atoum HTTP extension",
+    "keywords": ["TDD","atoum","test","unit testing","psr-7"],
+    "homepage": "http://www.atoum.org",
+    "license": "BSD",
+    "authors": [
+        {
+            "name": "jubianchi",
+            "email": "contact@jubianchi.fr"
+        }
+    ],
+    "require-dev": {
+        "atoum/atoum": "~1.0",
+        "psr/http-message": "~0.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "mageekguy\\atoum\\http\\": "classes/"
+        },
+        "files": ["autoloader.php"]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "mageekguy\\atoum\\http\\tests\\": "tests/"
+        }
+    }
+}
