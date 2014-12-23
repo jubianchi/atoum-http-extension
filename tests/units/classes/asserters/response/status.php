@@ -1,9 +1,9 @@
 <?php
 
-namespace mageekguy\atoum\http\tests\units\asserters\request;
+namespace mageekguy\atoum\http\tests\units\asserters\response;
 
 use atoum;
-use mageekguy\atoum\http\asserters\request;
+use mageekguy\atoum\http\asserters\response;
 
 class status extends atoum
 {
@@ -20,7 +20,7 @@ class status extends atoum
 		$this
 			->given(
 				$this->newTestedInstance,
-				$message = new request(),
+				$message = new response(),
 				$response = new \mock\Psr\Http\Message\IncomingResponseInterface
 			)
 			->if(
@@ -39,12 +39,13 @@ class status extends atoum
         $this
             ->given(
                 $this->newTestedInstance,
-                $message = new request(),
-                $request = new \mock\Psr\Http\Message\OutgoingRequestInterface
+                $message = new response(),
+                $request = new \mock\Psr\Http\Message\IncomingResponseInterface
             )
             ->if(
                 $this->calling($request)->getStatusCode = rand(0, 99),
-                $message->setWith($request)
+                $message->setWith($request),
+                $this->testedInstance->setParentAsserter($message)
             )
             ->then
                 ->exception(function($test) {
@@ -52,7 +53,10 @@ class status extends atoum
                     }
                 )
                     ->isInstanceOf('mageekguy\atoum\asserter\exception')
-            ->if($this->calling($request)->getStatusCode = rand(100, 199))
+            ->if(
+                $this->calling($request)->getStatusCode = rand(100, 199),
+                $this->testedInstance->setParentAsserter($message)
+            )
             ->then
                 ->object($this->testedInstance->isInformational)->isTestedInstance
                 ->object($this->testedInstance->isInformational())->isTestedInstance
@@ -64,12 +68,13 @@ class status extends atoum
         $this
             ->given(
                 $this->newTestedInstance,
-                $message = new request(),
-                $request = new \mock\Psr\Http\Message\OutgoingRequestInterface
+                $message = new response(),
+                $request = new \mock\Psr\Http\Message\IncomingResponseInterface
             )
             ->if(
                 $this->calling($request)->getStatusCode = rand(100, 199),
-                $message->setWith($request)
+                $message->setWith($request),
+                $this->testedInstance->setParentAsserter($message)
             )
             ->then
                 ->exception(function($test) {
@@ -77,7 +82,10 @@ class status extends atoum
                     }
                 )
                     ->isInstanceOf('mageekguy\atoum\asserter\exception')
-            ->if($this->calling($request)->getStatusCode = rand(200, 299))
+            ->if(
+                $this->calling($request)->getStatusCode = rand(200, 299),
+                $this->testedInstance->setParentAsserter($message)
+            )
             ->then
                 ->object($this->testedInstance->isSuccess)->isTestedInstance
                 ->object($this->testedInstance->isSuccess())->isTestedInstance
@@ -89,12 +97,13 @@ class status extends atoum
         $this
             ->given(
                 $this->newTestedInstance,
-                $message = new request(),
-                $request = new \mock\Psr\Http\Message\OutgoingRequestInterface
+                $message = new response(),
+                $request = new \mock\Psr\Http\Message\IncomingResponseInterface
             )
             ->if(
                 $this->calling($request)->getStatusCode = rand(200, 299),
-                $message->setWith($request)
+                $message->setWith($request),
+                $this->testedInstance->setParentAsserter($message)
             )
             ->then
                 ->exception(function($test) {
@@ -102,7 +111,10 @@ class status extends atoum
                     }
                 )
                     ->isInstanceOf('mageekguy\atoum\asserter\exception')
-            ->if($this->calling($request)->getStatusCode = rand(300, 399))
+            ->if(
+                $this->calling($request)->getStatusCode = rand(300, 399),
+                $this->testedInstance->setParentAsserter($message)
+            )
             ->then
                 ->object($this->testedInstance->isRedirection)->isTestedInstance
                 ->object($this->testedInstance->isRedirection())->isTestedInstance
@@ -114,12 +126,13 @@ class status extends atoum
         $this
             ->given(
                 $this->newTestedInstance,
-                $message = new request(),
-                $request = new \mock\Psr\Http\Message\OutgoingRequestInterface
+                $message = new response(),
+                $request = new \mock\Psr\Http\Message\IncomingResponseInterface
             )
             ->if(
                 $this->calling($request)->getStatusCode = rand(300, 399),
-                $message->setWith($request)
+                $message->setWith($request),
+                $this->testedInstance->setParentAsserter($message)
             )
             ->then
                 ->exception(function($test) {
@@ -127,7 +140,10 @@ class status extends atoum
                     }
                 )
                     ->isInstanceOf('mageekguy\atoum\asserter\exception')
-            ->if($this->calling($request)->getStatusCode = rand(400, 499))
+            ->if(
+                $this->calling($request)->getStatusCode = rand(400, 499),
+                $this->testedInstance->setParentAsserter($message)
+            )
             ->then
                 ->object($this->testedInstance->isClientError)->isTestedInstance
                 ->object($this->testedInstance->isClientError())->isTestedInstance
@@ -139,12 +155,13 @@ class status extends atoum
         $this
             ->given(
                 $this->newTestedInstance,
-                $message = new request(),
-                $request = new \mock\Psr\Http\Message\OutgoingRequestInterface
+                $message = new response(),
+                $request = new \mock\Psr\Http\Message\IncomingResponseInterface
             )
             ->if(
                 $this->calling($request)->getStatusCode = rand(400, 499),
-                $message->setWith($request)
+                $message->setWith($request),
+                $this->testedInstance->setParentAsserter($message)
             )
             ->then
                 ->exception(function($test) {
@@ -152,7 +169,10 @@ class status extends atoum
                     }
                 )
                     ->isInstanceOf('mageekguy\atoum\asserter\exception')
-            ->if($this->calling($request)->getStatusCode = rand(500, 599))
+            ->if(
+                $this->calling($request)->getStatusCode = rand(500, 599),
+                $this->testedInstance->setParentAsserter($message)
+            )
             ->then
                 ->object($this->testedInstance->isServerError)->isTestedInstance
                 ->object($this->testedInstance->isServerError())->isTestedInstance
@@ -164,12 +184,13 @@ class status extends atoum
         $this
             ->given(
                 $this->newTestedInstance,
-                $message = new request(),
-                $request = new \mock\Psr\Http\Message\OutgoingRequestInterface
+                $message = new response(),
+                $request = new \mock\Psr\Http\Message\IncomingResponseInterface
             )
             ->if(
                 $this->calling($request)->getStatusCode = rand(500, 699),
-                $message->setWith($request)
+                $message->setWith($request),
+                $this->testedInstance->setParentAsserter($message)
             )
             ->then
                 ->exception(function($test) {
@@ -177,7 +198,10 @@ class status extends atoum
                     }
                 )
                     ->isInstanceOf('mageekguy\atoum\asserter\exception')
-            ->if($this->calling($request)->getStatusCode = rand(700, 709))
+            ->if(
+                $this->calling($request)->getStatusCode = rand(700, 709),
+                $this->testedInstance->setParentAsserter($message)
+            )
             ->then
                 ->object($this->testedInstance->isInexcusable)->isTestedInstance
                 ->object($this->testedInstance->isInexcusable())->isTestedInstance
@@ -189,12 +213,13 @@ class status extends atoum
         $this
             ->given(
                 $this->newTestedInstance,
-                $message = new request(),
-                $request = new \mock\Psr\Http\Message\OutgoingRequestInterface
+                $message = new response(),
+                $request = new \mock\Psr\Http\Message\IncomingResponseInterface
             )
             ->if(
                 $this->calling($request)->getStatusCode = rand(700, 709),
-                $message->setWith($request)
+                $message->setWith($request),
+                $this->testedInstance->setParentAsserter($message)
             )
             ->then
                 ->exception(function($test) {
@@ -202,7 +227,10 @@ class status extends atoum
                     }
                 )
                     ->isInstanceOf('mageekguy\atoum\asserter\exception')
-            ->if($this->calling($request)->getStatusCode = rand(710, 719))
+            ->if(
+                $this->calling($request)->getStatusCode = rand(710, 719),
+                $this->testedInstance->setParentAsserter($message)
+            )
             ->then
                 ->object($this->testedInstance->isNoveltyImplementations)->isTestedInstance
                 ->object($this->testedInstance->isNoveltyImplementations())->isTestedInstance
@@ -214,12 +242,13 @@ class status extends atoum
         $this
             ->given(
                 $this->newTestedInstance,
-                $message = new request(),
-                $request = new \mock\Psr\Http\Message\OutgoingRequestInterface
+                $message = new response(),
+                $request = new \mock\Psr\Http\Message\IncomingResponseInterface
             )
             ->if(
                 $this->calling($request)->getStatusCode = rand(710, 719),
-                $message->setWith($request)
+                $message->setWith($request),
+                $this->testedInstance->setParentAsserter($message)
             )
             ->then
                 ->exception(function($test) {
@@ -227,7 +256,10 @@ class status extends atoum
                     }
                 )
                     ->isInstanceOf('mageekguy\atoum\asserter\exception')
-            ->if($this->calling($request)->getStatusCode = rand(720, 729))
+            ->if(
+                $this->calling($request)->getStatusCode = rand(720, 729),
+                $this->testedInstance->setParentAsserter($message)
+            )
             ->then
                 ->object($this->testedInstance->isEdgeCases)->isTestedInstance
                 ->object($this->testedInstance->isEdgeCases())->isTestedInstance
@@ -239,12 +271,13 @@ class status extends atoum
         $this
             ->given(
                 $this->newTestedInstance,
-                $message = new request(),
-                $request = new \mock\Psr\Http\Message\OutgoingRequestInterface
+                $message = new response(),
+                $request = new \mock\Psr\Http\Message\IncomingResponseInterface
             )
             ->if(
                 $this->calling($request)->getStatusCode = rand(720, 729),
-                $message->setWith($request)
+                $message->setWith($request),
+                $this->testedInstance->setParentAsserter($message)
             )
             ->then
                 ->exception(function($test) {
@@ -252,7 +285,10 @@ class status extends atoum
                     }
                 )
                     ->isInstanceOf('mageekguy\atoum\asserter\exception')
-            ->if($this->calling($request)->getStatusCode = rand(730, 739))
+            ->if(
+                $this->calling($request)->getStatusCode = rand(730, 739),
+                $this->testedInstance->setParentAsserter($message)
+            )
             ->then
                 ->object($this->testedInstance->isFucking)->isTestedInstance
                 ->object($this->testedInstance->isFucking())->isTestedInstance
@@ -264,12 +300,13 @@ class status extends atoum
         $this
             ->given(
                 $this->newTestedInstance,
-                $message = new request(),
-                $request = new \mock\Psr\Http\Message\OutgoingRequestInterface
+                $message = new response(),
+                $request = new \mock\Psr\Http\Message\IncomingResponseInterface
             )
             ->if(
                 $this->calling($request)->getStatusCode = rand(730, 739),
-                $message->setWith($request)
+                $message->setWith($request),
+                $this->testedInstance->setParentAsserter($message)
             )
             ->then
                 ->exception(function($test) {
@@ -277,7 +314,10 @@ class status extends atoum
                     }
                 )
                     ->isInstanceOf('mageekguy\atoum\asserter\exception')
-            ->if($this->calling($request)->getStatusCode = rand(740, 749))
+            ->if(
+                $this->calling($request)->getStatusCode = rand(740, 749),
+                $this->testedInstance->setParentAsserter($message)
+            )
             ->then
                 ->object($this->testedInstance->isMemeDriven)->isTestedInstance
                 ->object($this->testedInstance->isMemeDriven())->isTestedInstance
@@ -289,12 +329,13 @@ class status extends atoum
         $this
             ->given(
                 $this->newTestedInstance,
-                $message = new request(),
-                $request = new \mock\Psr\Http\Message\OutgoingRequestInterface
+                $message = new response(),
+                $request = new \mock\Psr\Http\Message\IncomingResponseInterface
             )
             ->if(
                 $this->calling($request)->getStatusCode = rand(740, 749),
-                $message->setWith($request)
+                $message->setWith($request),
+                $this->testedInstance->setParentAsserter($message)
             )
             ->then
                 ->exception(function($test) {
@@ -302,7 +343,10 @@ class status extends atoum
                     }
                 )
                     ->isInstanceOf('mageekguy\atoum\asserter\exception')
-            ->if($this->calling($request)->getStatusCode = rand(750, 759))
+            ->if(
+                $this->calling($request)->getStatusCode = rand(750, 759),
+                $this->testedInstance->setParentAsserter($message)
+            )
             ->then
                 ->object($this->testedInstance->isSyntaxError)->isTestedInstance
                 ->object($this->testedInstance->isSyntaxError())->isTestedInstance
@@ -314,12 +358,13 @@ class status extends atoum
         $this
             ->given(
                 $this->newTestedInstance,
-                $message = new request(),
-                $request = new \mock\Psr\Http\Message\OutgoingRequestInterface
+                $message = new response(),
+                $request = new \mock\Psr\Http\Message\IncomingResponseInterface
             )
             ->if(
                 $this->calling($request)->getStatusCode = rand(750, 759),
-                $message->setWith($request)
+                $message->setWith($request),
+                $this->testedInstance->setParentAsserter($message)
             )
             ->then
                 ->exception(function($test) {
@@ -327,7 +372,10 @@ class status extends atoum
                     }
                 )
                     ->isInstanceOf('mageekguy\atoum\asserter\exception')
-            ->if($this->calling($request)->getStatusCode = rand(760, 769))
+            ->if(
+                $this->calling($request)->getStatusCode = rand(760, 769),
+                $this->testedInstance->setParentAsserter($message)
+            )
             ->then
                 ->object($this->testedInstance->isSubstanceAffectedDeveloper)->isTestedInstance
                 ->object($this->testedInstance->isSubstanceAffectedDeveloper())->isTestedInstance
@@ -339,23 +387,27 @@ class status extends atoum
         $this
             ->given(
                 $this->newTestedInstance,
-                $message = new request(),
-                $request = new \mock\Psr\Http\Message\OutgoingRequestInterface
+                $message = new response(),
+                $request = new \mock\Psr\Http\Message\IncomingResponseInterface
             )
             ->if(
                 $this->calling($request)->getStatusCode = rand(760, 769),
-                $message->setWith($request)
+                $message->setWith($request),
+                $this->testedInstance->setParentAsserter($message)
             )
             ->then
-            ->exception(function($test) {
-                    $test->testedInstance->isPredictableProblems;
-                }
+                ->exception(function($test) {
+                        $test->testedInstance->isPredictableProblems;
+                    }
+                )
+                    ->isInstanceOf('mageekguy\atoum\asserter\exception')
+            ->if(
+                $this->calling($request)->getStatusCode = rand(770, 779),
+                $this->testedInstance->setParentAsserter($message)
             )
-            ->isInstanceOf('mageekguy\atoum\asserter\exception')
-            ->if($this->calling($request)->getStatusCode = rand(770, 779))
             ->then
-            ->object($this->testedInstance->isPredictableProblems)->isTestedInstance
-            ->object($this->testedInstance->isPredictableProblems())->isTestedInstance
+                ->object($this->testedInstance->isPredictableProblems)->isTestedInstance
+                ->object($this->testedInstance->isPredictableProblems())->isTestedInstance
         ;
     }
 
@@ -364,23 +416,27 @@ class status extends atoum
         $this
             ->given(
                 $this->newTestedInstance,
-                $message = new request(),
-                $request = new \mock\Psr\Http\Message\OutgoingRequestInterface
+                $message = new response(),
+                $request = new \mock\Psr\Http\Message\IncomingResponseInterface
             )
             ->if(
                 $this->calling($request)->getStatusCode = rand(770, 779),
-                $message->setWith($request)
+                $message->setWith($request),
+                $this->testedInstance->setParentAsserter($message)
             )
             ->then
-            ->exception(function($test) {
-                    $test->testedInstance->isSomebodyElsesProblem;
-                }
+                ->exception(function($test) {
+                        $test->testedInstance->isSomebodyElsesProblem;
+                    }
+                )
+                    ->isInstanceOf('mageekguy\atoum\asserter\exception')
+            ->if(
+                $this->calling($request)->getStatusCode = rand(780, 789),
+                $this->testedInstance->setParentAsserter($message)
             )
-            ->isInstanceOf('mageekguy\atoum\asserter\exception')
-            ->if($this->calling($request)->getStatusCode = rand(780, 789))
             ->then
-            ->object($this->testedInstance->isSomebodyElsesProblem)->isTestedInstance
-            ->object($this->testedInstance->isSomebodyElsesProblem())->isTestedInstance
+                ->object($this->testedInstance->isSomebodyElsesProblem)->isTestedInstance
+                ->object($this->testedInstance->isSomebodyElsesProblem())->isTestedInstance
         ;
     }
 
@@ -389,23 +445,27 @@ class status extends atoum
         $this
             ->given(
                 $this->newTestedInstance,
-                $message = new request(),
-                $request = new \mock\Psr\Http\Message\OutgoingRequestInterface
+                $message = new response(),
+                $request = new \mock\Psr\Http\Message\IncomingResponseInterface
             )
             ->if(
                 $this->calling($request)->getStatusCode = rand(780, 789),
-                $message->setWith($request)
+                $message->setWith($request),
+                $this->testedInstance->setParentAsserter($message)
             )
             ->then
-            ->exception(function($test) {
-                    $test->testedInstance->isInternetCrashed;
-                }
+                ->exception(function($test) {
+                        $test->testedInstance->isInternetCrashed;
+                    }
+                )
+                    ->isInstanceOf('mageekguy\atoum\asserter\exception')
+            ->if(
+                $this->calling($request)->getStatusCode = rand(790, 799),
+                $this->testedInstance->setParentAsserter($message)
             )
-            ->isInstanceOf('mageekguy\atoum\asserter\exception')
-            ->if($this->calling($request)->getStatusCode = rand(790, 799))
             ->then
-            ->object($this->testedInstance->isInternetCrashed)->isTestedInstance
-            ->object($this->testedInstance->isInternetCrashed())->isTestedInstance
+                ->object($this->testedInstance->isInternetCrashed)->isTestedInstance
+                ->object($this->testedInstance->isInternetCrashed())->isTestedInstance
         ;
     }
 } 
