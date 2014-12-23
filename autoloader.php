@@ -1,4 +1,5 @@
 <?php
+
 namespace mageekguy\atoum\http;
 
 use mageekguy\atoum;
