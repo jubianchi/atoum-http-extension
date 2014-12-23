@@ -2,7 +2,7 @@
     "name": "atoum/http-extension",
     "type": "library",
     "description": "atoum HTTP extension",
-    "keywords": ["TDD","atoum","test","unit testing","psr-7"],
+    "keywords": ["TDD","atoum","test","unit testing","http","request","response","psr-7"],
     "homepage": "http://www.atoum.org",
     "license": "BSD",
     "authors": [

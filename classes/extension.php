@@ -1,4 +1,5 @@
 <?php
+
 namespace mageekguy\atoum\http;
 
 use mageekguy\atoum;
@@ -58,7 +59,8 @@ class extension implements atoum\extension
 		return $this->test;
 	}
 
-	public function handleEvent($event, observable $observable) {
+	public function handleEvent($event, observable $observable)
+	{
 		return $this;
 	}
 }

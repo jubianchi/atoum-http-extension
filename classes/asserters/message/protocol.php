@@ -29,55 +29,55 @@ class protocol extends string
 		return $this->setWith($this->message->getValue()->getProtocolVersion());
 	}
 
-    public function isGreaterThan($version, $failMessage = null)
-    {
-        $compare = version_compare($this->message->getValue()->getProtocolVersion(), $version);
+	public function isGreaterThan($version, $failMessage = null)
+	{
+		$compare = version_compare($this->message->getValue()->getProtocolVersion(), $version);
 
-        switch ($compare)
-        {
-            case 0:
-                $this->fail($failMessage ?: $this->_(
-                    'Protocol version %s is equal to %s',
-                    $this->message->getValue()->getProtocolVersion(),
-                    $version
-                ));
+		switch ($compare)
+		{
+			case 0:
+				$this->fail($failMessage ?: $this->_(
+					'Protocol version %s is equal to %s',
+					$this->message->getValue()->getProtocolVersion(),
+					$version
+				));
 
-            case -1:
-                $this->fail($failMessage ?: $this->_(
-                    'Protocol version %s is lower than %s',
-                    $this->message->getValue()->getProtocolVersion(),
-                    $version
-                ));
+			case -1:
+				$this->fail($failMessage ?: $this->_(
+					'Protocol version %s is lower than %s',
+					$this->message->getValue()->getProtocolVersion(),
+					$version
+				));
 
-            default:
-                return $this->pass();
-        }
-    }
+			default:
+				return $this->pass();
+		}
+	}
 
-    public function isLowerThan($version, $failMessage = null)
-    {
-        $compare = version_compare($this->message->getValue()->getProtocolVersion(), $version);
+	public function isLowerThan($version, $failMessage = null)
+	{
+		$compare = version_compare($this->message->getValue()->getProtocolVersion(), $version);
 
-        switch ($compare)
-        {
-            case 0:
-                $this->fail($failMessage ?: $this->_(
-                    'Protocol version %s is equal to %s',
-                    $this->message->getValue()->getProtocolVersion(),
-                    $version
-                ));
+		switch ($compare)
+		{
+			case 0:
+				$this->fail($failMessage ?: $this->_(
+					'Protocol version %s is equal to %s',
+					$this->message->getValue()->getProtocolVersion(),
+					$version
+				));
 
-            case 1:
-                $this->fail($failMessage ?: $this->_(
-                    'Protocol version %s is greater than %s',
-                    $this->message->getValue()->getProtocolVersion(),
-                    $version
-                ));
+			case 1:
+				$this->fail($failMessage ?: $this->_(
+					'Protocol version %s is greater than %s',
+					$this->message->getValue()->getProtocolVersion(),
+					$version
+				));
 
-            default:
-                return $this->pass();
-        }
+			default:
+				return $this->pass();
+		}
 
-        return $this;
-    }
+		return $this;
+	}
 } 
