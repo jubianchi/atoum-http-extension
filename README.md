@@ -1,10 +1,15 @@
-# atoum HTTP extension [![Build Status](https://travis-ci.org/atoum/http-extension.svg?branch=master)](https://travis-ci.org/atoum/http-extension)
-
 ![atoum](http://downloads.atoum.org/images/logo.png)
 
-atoum HTTP extension based on PSR-7 standard.
+[atoum](http://atoum.org/) is a **simple**, **modern** and **intuitive** unit
+testing framework for PHP!
 
-## Todo
+# atoum/http-extension[![build status](https://travis-ci.org/atoum/http-extension.svg?branch=master)](https://travis-ci.org/atoum/http-extension)
+
+This extension helps to assert on HTTP request and response based on the [PSR
+HTTP message interfaces](https://github.com/php-fig/fig-standards/blob/master/proposed/http-message.md).
+
+
+## TODO
 
 * ~~`request` asserter derivating form the `message` asserter~~
     * `url` child asserter
