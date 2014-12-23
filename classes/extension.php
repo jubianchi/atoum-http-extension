@@ -16,19 +16,26 @@ class extension implements atoum\extension
 		if ($configurator)
 		{
 			$parser = $configurator->getScript()->getArgumentsParser();
-			$handler = function($script, $argument, $values) {
+
+            $units = function($script, $argument, $values) {
 				$script->getRunner()->addTestsFromDirectory(dirname(__DIR__) . '/tests/units/classes');
 			};
 
+            $functionals = function($script, $argument, $values) {
+                $script->getRunner()->addTestsFromDirectory(dirname(__DIR__) . '/tests/functionals');
+            };
+
 			$parser
-				->addHandler($handler, array('--test-ext'))
-				->addHandler($handler, array('--test-it'))
+				->addHandler($units, array('--test-ext'))
+				->addHandler($units, array('--test-it'))
+				->addHandler($functionals, array('--test-functionals'))
 				->addHandler(
-					function($script, $argument, $values) {
-						$script->getRunner()->addTestsFromDirectory(dirname(__DIR__) . '/tests/functionals');
-					},
-					array('--test-functionals')
-				)
+                    function($script, $argument, $values) use ($units, $functionals) {
+                        $units($script, $argument, $values);
+                        $functionals($script, $argument, $values);
+                    },
+                    array('--test-all-ext')
+                )
 			;
 		}
 	}
