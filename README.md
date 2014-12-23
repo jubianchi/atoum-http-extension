@@ -13,12 +13,12 @@ HTTP message interfaces](https://github.com/php-fig/fig-standards/blob/master/pr
 
 * ~~`request` asserter derivating form the `message` asserter~~
     * `url` child asserter
-    * `method` child asserter
+    * ~~`method` child asserter~~
 * `incomingRequest` asserter derivating form the `request` asserter
     * `params` child asserter
     * `cookies` child asserter
     * `files` child asserter
     * `attributes` child asserter
 * ~~`response` asserter derivating form the `message` asserter~~
-    * `status` child asserter
+    * ~~`status` child asserter~~
     * `reason` child asserter
