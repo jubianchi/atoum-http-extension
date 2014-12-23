@@ -29,6 +29,8 @@ class protocol extends atoum
 			)
 			->then
 				->object($this->testedInstance->setParentAsserter($message))->isTestedInstance
+                ->mock($request)
+                    ->call('getProtocolVersion')->once
 		;
 	}
 

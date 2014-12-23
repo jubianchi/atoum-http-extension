@@ -31,6 +31,8 @@ class body extends atoum
 			)
 			->then
 				->object($this->testedInstance->setParentAsserter($message))->isTestedInstance
+                ->mock($request)
+                    ->call('getBody')->once
 		;
 	}
 } 
