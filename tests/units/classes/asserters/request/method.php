@@ -44,7 +44,8 @@ class method extends atoum
             )
             ->if(
                 $this->calling($request)->getMethod = uniqid(),
-                $message->setWith($request)
+                $message->setWith($request),
+                $this->testedInstance->setParentAsserter($message)
             )
             ->then
                 ->exception(function($test) {
@@ -52,11 +53,17 @@ class method extends atoum
                     }
                 )
                     ->isInstanceOf('mageekguy\atoum\asserter\exception')
-            ->if($this->calling($request)->getMethod = 'GET')
+            ->if(
+                $this->calling($request)->getMethod = 'GET',
+                $this->testedInstance->setParentAsserter($message)
+            )
             ->then
                 ->object($this->testedInstance->isGet)->isTestedInstance
                 ->object($this->testedInstance->isGet())->isTestedInstance
-            ->if($this->calling($request)->getMethod = 'get')
+            ->if(
+                $this->calling($request)->getMethod = 'get',
+                $this->testedInstance->setParentAsserter($message)
+            )
             ->then
                 ->object($this->testedInstance->isGet)->isTestedInstance
                 ->object($this->testedInstance->isGet())->isTestedInstance
@@ -73,7 +80,8 @@ class method extends atoum
             )
             ->if(
                 $this->calling($request)->getMethod = uniqid(),
-                $message->setWith($request)
+                $message->setWith($request),
+                $this->testedInstance->setParentAsserter($message)
             )
             ->then
                 ->exception(function($test) {
@@ -81,11 +89,17 @@ class method extends atoum
                     }
                 )
                     ->isInstanceOf('mageekguy\atoum\asserter\exception')
-            ->if($this->calling($request)->getMethod = 'POST')
+            ->if(
+                $this->calling($request)->getMethod = 'POST',
+                $this->testedInstance->setParentAsserter($message)
+            )
             ->then
                 ->object($this->testedInstance->isPost)->isTestedInstance
                 ->object($this->testedInstance->isPost())->isTestedInstance
-            ->if($this->calling($request)->getMethod = 'post')
+            ->if(
+                $this->calling($request)->getMethod = 'post',
+                $this->testedInstance->setParentAsserter($message)
+            )
             ->then
                 ->object($this->testedInstance->isPost)->isTestedInstance
                 ->object($this->testedInstance->isPost())->isTestedInstance
@@ -102,7 +116,8 @@ class method extends atoum
             )
             ->if(
                 $this->calling($request)->getMethod = uniqid(),
-                $message->setWith($request)
+                $message->setWith($request),
+                $this->testedInstance->setParentAsserter($message)
             )
             ->then
                 ->exception(function($test) {
@@ -110,11 +125,17 @@ class method extends atoum
                     }
                 )
                     ->isInstanceOf('mageekguy\atoum\asserter\exception')
-            ->if($this->calling($request)->getMethod = 'PUT')
+            ->if(
+                $this->calling($request)->getMethod = 'PUT',
+                $this->testedInstance->setParentAsserter($message)
+            )
             ->then
                 ->object($this->testedInstance->isPut)->isTestedInstance
                 ->object($this->testedInstance->isPut())->isTestedInstance
-            ->if($this->calling($request)->getMethod = 'put')
+            ->if(
+                $this->calling($request)->getMethod = 'put',
+                $this->testedInstance->setParentAsserter($message)
+            )
             ->then
                 ->object($this->testedInstance->isPut)->isTestedInstance
                 ->object($this->testedInstance->isPut())->isTestedInstance
@@ -131,7 +152,8 @@ class method extends atoum
             )
             ->if(
                 $this->calling($request)->getMethod = uniqid(),
-                $message->setWith($request)
+                $message->setWith($request),
+                $this->testedInstance->setParentAsserter($message)
             )
             ->then
                 ->exception(function($test) {
@@ -139,11 +161,17 @@ class method extends atoum
                     }
                 )
                     ->isInstanceOf('mageekguy\atoum\asserter\exception')
-            ->if($this->calling($request)->getMethod = 'HEAD')
+            ->if(
+                $this->calling($request)->getMethod = 'HEAD',
+                $this->testedInstance->setParentAsserter($message)
+            )
             ->then
                 ->object($this->testedInstance->isHead)->isTestedInstance
                 ->object($this->testedInstance->isHead())->isTestedInstance
-            ->if($this->calling($request)->getMethod = 'head')
+            ->if(
+                $this->calling($request)->getMethod = 'head',
+                $this->testedInstance->setParentAsserter($message)
+            )
             ->then
                 ->object($this->testedInstance->isHead)->isTestedInstance
                 ->object($this->testedInstance->isHead())->isTestedInstance
@@ -160,7 +188,8 @@ class method extends atoum
             )
             ->if(
                 $this->calling($request)->getMethod = uniqid(),
-                $message->setWith($request)
+                $message->setWith($request),
+                $this->testedInstance->setParentAsserter($message)
             )
             ->then
                 ->exception(function($test) {
@@ -168,11 +197,17 @@ class method extends atoum
                     }
                 )
                     ->isInstanceOf('mageekguy\atoum\asserter\exception')
-            ->if($this->calling($request)->getMethod = 'OPTIONS')
+            ->if(
+                $this->calling($request)->getMethod = 'OPTIONS',
+                $this->testedInstance->setParentAsserter($message)
+            )
             ->then
                 ->object($this->testedInstance->isOptions)->isTestedInstance
                 ->object($this->testedInstance->isOptions())->isTestedInstance
-            ->if($this->calling($request)->getMethod = 'options')
+            ->if(
+                $this->calling($request)->getMethod = 'options',
+                $this->testedInstance->setParentAsserter($message)
+            )
             ->then
                 ->object($this->testedInstance->isOptions)->isTestedInstance
                 ->object($this->testedInstance->isOptions())->isTestedInstance
@@ -189,7 +224,8 @@ class method extends atoum
             )
             ->if(
                 $this->calling($request)->getMethod = uniqid(),
-                $message->setWith($request)
+                $message->setWith($request),
+                $this->testedInstance->setParentAsserter($message)
             )
             ->then
                 ->exception(function($test) {
@@ -197,11 +233,17 @@ class method extends atoum
                     }
                 )
                     ->isInstanceOf('mageekguy\atoum\asserter\exception')
-            ->if($this->calling($request)->getMethod = 'DELETE')
+            ->if(
+                $this->calling($request)->getMethod = 'DELETE',
+                $this->testedInstance->setParentAsserter($message)
+            )
             ->then
                 ->object($this->testedInstance->isDelete)->isTestedInstance
                 ->object($this->testedInstance->isDelete())->isTestedInstance
-            ->if($this->calling($request)->getMethod = 'delete')
+            ->if(
+                $this->calling($request)->getMethod = 'delete',
+                $this->testedInstance->setParentAsserter($message)
+            )
             ->then
                 ->object($this->testedInstance->isDelete)->isTestedInstance
                 ->object($this->testedInstance->isDelete())->isTestedInstance
@@ -218,7 +260,8 @@ class method extends atoum
             )
             ->if(
                 $this->calling($request)->getMethod = uniqid(),
-                $message->setWith($request)
+                $message->setWith($request),
+                $this->testedInstance->setParentAsserter($message)
             )
             ->then
                 ->exception(function($test) {
@@ -226,11 +269,17 @@ class method extends atoum
                     }
                 )
                     ->isInstanceOf('mageekguy\atoum\asserter\exception')
-            ->if($this->calling($request)->getMethod = 'TRACE')
+            ->if(
+                $this->calling($request)->getMethod = 'TRACE',
+                $this->testedInstance->setParentAsserter($message)
+            )
             ->then
                 ->object($this->testedInstance->isTrace)->isTestedInstance
                 ->object($this->testedInstance->isTrace())->isTestedInstance
-            ->if($this->calling($request)->getMethod = 'trace')
+            ->if(
+                $this->calling($request)->getMethod = 'trace',
+                $this->testedInstance->setParentAsserter($message)
+            )
             ->then
                 ->object($this->testedInstance->isTrace)->isTestedInstance
                 ->object($this->testedInstance->isTrace())->isTestedInstance
@@ -247,7 +296,8 @@ class method extends atoum
             )
             ->if(
                 $this->calling($request)->getMethod = uniqid(),
-                $message->setWith($request)
+                $message->setWith($request),
+                $this->testedInstance->setParentAsserter($message)
             )
             ->then
                 ->exception(function($test) {
@@ -255,11 +305,17 @@ class method extends atoum
                     }
                 )
                     ->isInstanceOf('mageekguy\atoum\asserter\exception')
-            ->if($this->calling($request)->getMethod = 'CONNECT')
+            ->if(
+                $this->calling($request)->getMethod = 'CONNECT',
+                $this->testedInstance->setParentAsserter($message)
+            )
             ->then
                 ->object($this->testedInstance->isConnect)->isTestedInstance
                 ->object($this->testedInstance->isConnect())->isTestedInstance
-            ->if($this->calling($request)->getMethod = 'connect')
+            ->if(
+                $this->calling($request)->getMethod = 'connect',
+                $this->testedInstance->setParentAsserter($message)
+            )
             ->then
                 ->object($this->testedInstance->isConnect)->isTestedInstance
                 ->object($this->testedInstance->isConnect())->isTestedInstance
