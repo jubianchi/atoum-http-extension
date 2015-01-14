@@ -51,9 +51,9 @@ class request extends message
 		$this->methodAsserterFactory = function() use ($generator, $factory, & $test) {
 			$protocol = $factory($generator);
 
-			if ($this->test !== null)
+			if ($test !== null)
 			{
-				$protocol->setWithTest($this->test);
+				$protocol->setWithTest($test);
 			}
 
 			return $protocol;
@@ -74,9 +74,9 @@ class request extends message
 		$this->urlAsserterFactory = function() use ($generator, $factory, & $test) {
 			$protocol = $factory($generator);
 
-			if ($this->test !== null)
+			if ($test !== null)
 			{
-				$protocol->setWithTest($this->test);
+				$protocol->setWithTest($test);
 			}
 
 			return $protocol;

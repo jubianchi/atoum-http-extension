@@ -55,9 +55,9 @@ class message extends object
 		$this->protocolAsserterFactory = function() use ($generator, $factory, & $test) {
 			$protocol = $factory($generator);
 
-			if ($this->test !== null)
+			if ($test !== null)
 			{
-				$protocol->setWithTest($this->test);
+				$protocol->setWithTest($test);
 			}
 
 			return $protocol;
@@ -78,9 +78,9 @@ class message extends object
 		$this->bodyAsserterFactory = function() use ($generator, $factory, & $test) {
 			$body = $factory($generator);
 
-			if ($this->test !== null)
+			if ($test !== null)
 			{
-				$body->setWithTest($this->test);
+				$body->setWithTest($test);
 			}
 
 			return $body;
@@ -101,9 +101,9 @@ class message extends object
 		$this->headersAsserterFactory = function() use ($generator, $factory, & $test) {
 			$headers = $factory($generator);
 
-			if ($this->test !== null)
+			if ($test !== null)
 			{
-				$headers->setWithTest($this->test);
+				$headers->setWithTest($test);
 			}
 
 			return $headers;
