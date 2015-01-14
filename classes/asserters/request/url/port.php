@@ -7,6 +7,7 @@ use mageekguy\atoum\asserters\integer;
 use mageekguy\atoum\exceptions;
 use mageekguy\atoum\tools;
 use mageekguy\atoum;
+use mageekguy\atoum\http\asserters\request\url;
 
 class port extends integer
 {
@@ -29,7 +30,7 @@ class port extends integer
         }
 	}
 
-	public function setParentAsserter(atoum\http\asserters\request\url $url)
+	public function setParentAsserter(url $url)
 	{
 		$this->url = $url;
 

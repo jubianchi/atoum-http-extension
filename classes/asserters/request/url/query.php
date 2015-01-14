@@ -7,6 +7,7 @@ use mageekguy\atoum\asserters\phpArray;
 use mageekguy\atoum\exceptions;
 use mageekguy\atoum\tools;
 use mageekguy\atoum;
+use mageekguy\atoum\http\asserters\request\url;
 
 class query extends phpArray
 {
@@ -29,7 +30,7 @@ class query extends phpArray
         }
 	}
 
-	public function setParentAsserter(atoum\http\asserters\request\url $url)
+	public function setParentAsserter(url $url)
 	{
 		$this->url = $url;
         parse_str(parse_url($this->url->getValue(), PHP_URL_QUERY), $query);
