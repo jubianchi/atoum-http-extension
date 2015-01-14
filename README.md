@@ -12,7 +12,7 @@ HTTP message interfaces](https://github.com/php-fig/fig-standards/blob/master/pr
 ## TODO
 
 * ~~`request` asserter derivating form the `message` asserter~~
-    * `url` child asserter (see [parse_url](http://fr.php.net/manual/fr/function.parse-url.php))
+    * ~~`url` child asserter (see [parse_url](http://fr.php.net/manual/fr/function.parse-url.php))~~
     * ~~`method` child asserter~~
 * `incomingRequest` asserter derivating form the `request` asserter
     * `params` child asserter
