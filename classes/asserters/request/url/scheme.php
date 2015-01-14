@@ -36,4 +36,14 @@ class scheme extends string
 
 		return $this->setWith(parse_url($this->url->getValue(), PHP_URL_SCHEME));
 	}
+
+    public function isHttp($failMessage = null)
+    {
+        return $this->isEqualTo('http', $failMessage ?: $this->_('%s is not a HTTP URL', $this->url));
+    }
+
+    public function isHttps($failMessage = null)
+    {
+        return $this->isEqualTo('https', $failMessage ?: $this->_('%s is not a HTTPS URL', $this->url));
+    }
 } 

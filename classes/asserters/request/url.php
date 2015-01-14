@@ -21,7 +21,23 @@ class url extends string
     protected $fragmentAsserterFactory;
 	protected $request;
 
-	public function __call($method, $arguments)
+    public function __construct(asserter\generator $generator = null, tools\variable\analyzer $analyzer = null, atoum\locale $locale = null)
+    {
+        parent::__construct($generator, $analyzer, $locale);
+
+        $this
+            ->setSchemeAsserterFactory()
+            ->setHostAsserterFactory()
+            ->setPortAsserterFactory()
+            ->setUserAsserterFactory()
+            ->setPasswordAsserterFactory()
+            ->setPathAsserterFactory()
+            ->setQueryAsserterFactory()
+            ->setFragmentAsserterFactory()
+        ;
+    }
+
+    public function __call($method, $arguments)
 	{
         return call_user_func_array(array($this->request, $method), $arguments);
 	}

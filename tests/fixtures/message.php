@@ -7,8 +7,9 @@ use Psr\Http\Message\MessageInterface;
 class message implements MessageInterface
 {
 	private $protocol;
-	private $headers;
-	private $body;
+
+	protected $headers;
+    protected $body;
 
 	public function __construct($protocol, array $headers, body $body)
 	{

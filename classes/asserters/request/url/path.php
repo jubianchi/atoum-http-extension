@@ -19,13 +19,20 @@ class path extends string
 
 	public function __get($asserter)
 	{
-        return $this->url->__get($asserter);
+        try
+        {
+            return parent::__get($asserter);
+        }
+        catch(exceptions\logic\invalidArgument $exception)
+        {
+            return $this->url->__get($asserter);
+        }
 	}
 
 	public function setParentAsserter(atoum\http\asserters\request\url $url)
 	{
 		$this->url = $url;
 
-		return $this->setWith(parse_url($this->url->getValue(), PHP_URL_PATH));
+		return $this->setWith((string) parse_url($this->url->getValue(), PHP_URL_PATH));
 	}
 } 

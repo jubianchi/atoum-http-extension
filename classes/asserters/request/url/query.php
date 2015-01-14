@@ -19,7 +19,14 @@ class query extends phpArray
 
 	public function __get($asserter)
 	{
-        return $this->url->__get($asserter);
+        try
+        {
+            return parent::__get($asserter);
+        }
+        catch(exceptions\logic\invalidArgument $exception)
+        {
+            return $this->url->__get($asserter);
+        }
 	}
 
 	public function setParentAsserter(atoum\http\asserters\request\url $url)
