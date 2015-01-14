@@ -9,7 +9,7 @@ class message implements MessageInterface
 	private $protocol;
 
 	protected $headers;
-    protected $body;
+	protected $body;
 
 	public function __construct($protocol, array $headers, body $body)
 	{
