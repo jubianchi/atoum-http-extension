@@ -16,7 +16,7 @@ class extension extends atoum
 			)
 			->if($this->calling($test)->getAsserterGenerator = $generator)
 			->then
-				->object($this->testedInstance->settest($test))->isTestedInstance
+				->object($this->testedInstance->setTest($test))->isTestedInstance
 				->mock($generator)
 					->call('addNamespace')->withArguments('mageekguy\atoum\http\asserters')->once
 		;
